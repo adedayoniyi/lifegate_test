@@ -6,8 +6,8 @@ import Sidebar from "./components/sidebar";
 const fredoka = Poppins({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
-  title: "Prepbase - Study Smarter, Not Harder",
-  description: "Transform your notes, lectures, and materials into personalized study guides. Practice, track, and ace your exams with AI-driven precision.",
+  title: "Lifegate",
+  description: "Hello",
   image: "/thumbnail.png",
   icons: "/favicon.ico",
   noIndex: false
