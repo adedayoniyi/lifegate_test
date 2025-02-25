@@ -19,7 +19,7 @@ export default function ChatPage() {
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const assistantMessageContentRef = useRef(""); // Ref to store assistant content
 
-    // Developer defined custom prompt; this is only used when sending the very first message
+    // Developer defined custom prompt; NOTE: this is only used when sending the very first message
     const developerInitialPrompt = "You are a diagnosis expert";
 
     // Auto-scroll to the latest message
