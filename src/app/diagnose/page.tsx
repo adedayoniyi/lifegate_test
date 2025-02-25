@@ -14,7 +14,13 @@ export default function DiagnosePage() {
         setStreamContent("");
 
         try {
-            await fetchEventSource(`${process.env.baseURL}/inference/diagnose`, {
+            console.log("API URL:", `${process.env.NEXT_PUBLIC_SERVER_URL}/inference/diagnose`);
+            console.log(JSON.stringify({
+                symptoms,
+                patient_history: history,
+                model: "deepseek-ai/DeepSeek-V3",
+            }),)
+            await fetchEventSource(`${process.env.NEXT_PUBLIC_SERVER_URL}/inference/diagnose`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

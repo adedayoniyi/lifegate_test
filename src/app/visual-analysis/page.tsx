@@ -24,7 +24,7 @@ export default function VisualAnalysisPage() {
         formData.append("file", file);
 
         try {
-            await fetchEventSource(`${process.env.baseURL}/inference/visual-analysis`, {
+            await fetchEventSource(`${process.env.NEXT_PUBLIC_SERVER_URL}/inference/visual-analysis`, {
                 method: "POST",
                 body: formData,
                 onmessage: (event) => {

@@ -12,6 +12,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      whitespace: {
+        'pre-wrap': 'pre-wrap',
+      },
     },
   },
   plugins: [],
