@@ -26,6 +26,24 @@
   white-space: pre-line;
 }
 
+.markdown>* {
+  all: revert;
+  @apply w-full border-collapse;
+}
+
+.markdown th,
+.markdown td {
+  @apply border border-gray-300 p-2;
+}
+
+.markdown th {
+  @apply bg-gray-100 text-left;
+}
+
+.animate-progress {
+  animation: progress 2s linear infinite;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

@@ -79,7 +79,7 @@ export default function ChatWithSidebar() {
             return msg.content.map((part: any, index: number) => {
                 if (part.type === "text") {
                     return (
-                        <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]} key={index}>
+                        <ReactMarkdown className="markdown prose prose-lg max-w-none" remarkPlugins={[remarkGfm, remarkBreaks]} key={index}>
                             {part.text}
                         </ReactMarkdown>
                     );
@@ -99,7 +99,7 @@ export default function ChatWithSidebar() {
         } else if (typeof msg.content === "string") {
             // assistant or system content might just be plain text
             return (
-                <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+                <ReactMarkdown className="markdown prose prose-lg max-w-none" remarkPlugins={[remarkGfm, remarkBreaks]}>
                     {msg.content}
                 </ReactMarkdown>
             );
@@ -261,10 +261,10 @@ export default function ChatWithSidebar() {
                         >
                             <div
                                 className={`max-w-md p-4 rounded-lg shadow ${msg.role === "user"
-                                        ? "bg-blue-500 text-white"
-                                        : msg.role === "assistant"
-                                            ? "bg-gray-200 text-gray-900"
-                                            : "bg-yellow-100 text-gray-800"
+                                    ? "bg-blue-500 text-white"
+                                    : msg.role === "assistant"
+                                        ? "bg-gray-200 text-gray-900"
+                                        : "bg-yellow-100 text-gray-800"
                                     }`}
                             >
                                 {renderMessageContent(msg)}
