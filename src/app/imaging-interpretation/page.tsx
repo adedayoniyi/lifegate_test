@@ -1,3 +1,4 @@
+"use client"
 import { useState, FormEvent } from "react";
 import { fetchEventSource } from "@microsoft/fetch-event-source";
 import ReactMarkdown from "react-markdown";
