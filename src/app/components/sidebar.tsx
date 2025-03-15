@@ -25,42 +25,28 @@ export default function Sidebar() {
                             Chat
                         </span>
                     </Link>
-                    <Link href="/diagnose">
+                    <Link href="/diagnosis">
                         <span className="block px-4 py-2 hover:bg-gray-700 cursor-pointer">
                             Diagnosis
                         </span>
                     </Link>
-                    <Link href="/visual-analysis">
+                    <Link href="/suggested-actions">
                         <span className="block px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                            Visual Analysis
+                            Suggested Actions
                         </span>
                     </Link>
                     {/* New Menu Items */}
-                    <Link href="/patient-update">
+                    <Link href="/prescription-check">
                         <span className="block px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                            Patient Update
+                            Prescription Check
                         </span>
                     </Link>
-                    <Link href="/clinician-actions">
+                    <Link href="/pending-tasks">
                         <span className="block px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                            Clinician Actions
+                            Pending Tasks
                         </span>
                     </Link>
-                    <Link href="/imaging-interpretation">
-                        <span className="block px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                            Imaging Interpretation
-                        </span>
-                    </Link>
-                    <Link href="/treatment-protocol">
-                        <span className="block px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                            Treatment Protocol
-                        </span>
-                    </Link>
-                    <Link href="/medication-suggestions">
-                        <span className="block px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                            Medication Suggestions
-                        </span>
-                    </Link>
+
                 </nav>
             </div>
         </>
