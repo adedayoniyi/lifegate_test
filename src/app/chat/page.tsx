@@ -31,7 +31,7 @@ export default function ChatWithSidebar() {
     // Fetch the list of conversations for the sidebar
     const fetchConversations = async () => {
         try {
-            const res = await fetch("http://127.0.0.1:8000/inference/conversations");
+            const res = await fetch("http://127.0.0.1:8000/inference/conversations?patient_id=24");
             if (res.ok) {
                 const data = await res.json();
                 setConversations(data);
