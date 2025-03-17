@@ -73,13 +73,17 @@ export default function ChatWithSidebar() {
     // Render each message's content. 
     // For user messages that might contain a multi-modal array, we show them carefully.
     const renderMessageContent = (msg: Message) => {
+        // If the message content is an array, render each part:
         if (Array.isArray(msg.content)) {
-            // We have an array of objects: {type, text? image_url?}
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             return msg.content.map((part: any, index: number) => {
                 if (part.type === "text") {
                     return (
-                        <ReactMarkdown className="markdown prose prose-lg max-w-none" remarkPlugins={[remarkGfm, remarkBreaks]} key={index}>
+                        <ReactMarkdown
+                            className="markdown prose prose-lg max-w-none"
+                            remarkPlugins={[remarkGfm, remarkBreaks]}
+                            key={index}
+                        >
                             {part.text}
                         </ReactMarkdown>
                     );
@@ -96,16 +100,44 @@ export default function ChatWithSidebar() {
                 }
                 return null;
             });
-        } else if (typeof msg.content === "string") {
-            // assistant or system content might just be plain text
+        }
+        // If it's a plain string, render it as markdown.
+        else if (typeof msg.content === "string") {
             return (
-                <ReactMarkdown className="markdown prose prose-lg max-w-none" remarkPlugins={[remarkGfm, remarkBreaks]}>
+                <ReactMarkdown
+                    className="markdown prose prose-lg max-w-none"
+                    remarkPlugins={[remarkGfm, remarkBreaks]}
+                >
                     {msg.content}
                 </ReactMarkdown>
             );
         }
+        // If it's an object (not an array), check for a type field.
+        else if (typeof msg.content === "object" && msg.content !== null) {
+            if (msg.content.type === "text") {
+                return (
+                    <ReactMarkdown
+                        className="markdown prose prose-lg max-w-none"
+                        remarkPlugins={[remarkGfm, remarkBreaks]}
+                    >
+                        {msg.content.text}
+                    </ReactMarkdown>
+                );
+            } else if (msg.content.type === "image_url") {
+                return (
+                    <div className="my-2">
+                        <img
+                            src={msg.content.image_url.url}
+                            alt="User provided"
+                            className="max-h-64 object-contain rounded"
+                        />
+                    </div>
+                );
+            }
+        }
         return null;
     };
+
 
     // Submit new message
     const handleSend = async (e: FormEvent) => {
@@ -139,8 +171,11 @@ export default function ChatWithSidebar() {
         // Prepare the form data
         const formData = new FormData();
         formData.append("instruction", inputText);
-        formData.append("model", "meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo");
+        formData.append("model", "meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo");
         formData.append("conversation_id", convId);
+        formData.append("patient_id", "24");
+
+
 
         // Only append a system_prompt if we have no active conversation
         // and we want a custom prompt. Otherwise, the backend uses the default.
